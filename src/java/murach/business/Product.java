@@ -3,6 +3,7 @@ package murach.business;
 import java.io.Serializable;
 
 public final class Product implements Serializable {
+
     private final String code;
     private final String description;
     private final double price;

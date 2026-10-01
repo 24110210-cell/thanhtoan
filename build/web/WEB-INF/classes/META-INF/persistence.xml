@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence version="3.0"
+             xmlns="https://jakarta.ee/xml/ns/persistence"
+             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             xsi:schemaLocation="https://jakarta.ee/xml/ns/persistence
+                                 https://jakarta.ee/xml/ns/persistence/persistence_3_0.xsd">
+
+    <persistence-unit name="gioHangPU" transaction-type="RESOURCE_LOCAL">
+        <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
+        <class>murach.business.Order</class>
+        <class>murach.business.OrderItem</class>
+        <exclude-unlisted-classes>false</exclude-unlisted-classes>
+
+        <properties>
+            <!-- ⭐ TẮT SSL để tránh lỗi cert Aiven -->
+            <property name="jakarta.persistence.jdbc.url"
+                      value="jdbc:mysql://mysql-7cd115e-student-d0a8.h.aivencloud.com:17656/defaultdb?sslMode=DISABLED&amp;allowPublicKeyRetrieval=true&amp;serverTimezone=UTC"/>
+
+            <property name="jakarta.persistence.jdbc.driver"
+                      value="com.mysql.cj.jdbc.Driver"/>
+
+            <property name="jakarta.persistence.jdbc.user"
+                      value="avnadmin"/>
+
+            <property name="jakarta.persistence.jdbc.password"
+                      value="AVNS_8szhpnsDGCOkIXCwSAJ"/>
+
+            <!-- ⭐ ĐỔI TỪ "update" SANG "create-or-extend-tables" -->
+            <property name="jakarta.persistence.schema-generation.database.action"
+                      value="create-or-extend-tables"/>
+
+            <property name="eclipselink.logging.level" value="FINE"/>
+            <property name="eclipselink.logging.parameters" value="true"/>
+        </properties>
+    </persistence-unit>
+</persistence>

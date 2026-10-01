@@ -3,6 +3,7 @@ package murach.business;
 import java.io.Serializable;
 
 public class LineItem implements Serializable {
+
     private Product product;
     private int quantity;
 

@@ -1,4 +1,5 @@
-
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -7,6 +8,24 @@
     <link rel="stylesheet" type="text/css" href="main.css">
 </head>
 <body>
+
+    <%-- ===== THÔNG BÁO KẾT QUẢ THANH TOÁN ===== --%>
+    <c:if test="${param.msg == 'paid'}">
+        <div style="padding:15px; margin-bottom:20px; background:#e8f5e9;
+                    border-left:5px solid #27ae60; color:#1b5e20; border-radius:4px;">
+            <strong>✅ Thanh toán thành công!</strong><br>
+            Mã đơn hàng: <strong>${param.orderId}</strong><br>
+            Cảm ơn bạn đã đặt hàng. Đơn hàng sẽ được xử lý trong thời gian sớm nhất.
+        </div>
+    </c:if>
+
+    <c:if test="${param.msg == 'failed'}">
+        <div style="padding:15px; margin-bottom:20px; background:#ffebee;
+                    border-left:5px solid #c0392b; color:#7f0000; border-radius:4px;">
+            <strong>❌ Thanh toán không thành công.</strong><br>
+            Vui lòng thử lại hoặc liên hệ bộ phận hỗ trợ.
+        </div>
+    </c:if>
 
     <h2>CD list</h2>
 

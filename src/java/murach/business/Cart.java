@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.concurrent.CopyOnWriteArrayList;
 
 public class Cart implements Serializable {
+
     private final List<LineItem> items = new CopyOnWriteArrayList<>();
 
     public Cart() {}
@@ -41,5 +42,22 @@ public class Cart implements Serializable {
 
     public synchronized void removeItem(String code) {
         items.removeIf(item -> item.getProduct().getCode().equalsIgnoreCase(code));
+    }
+
+    // ===== THÊM MỚI =====
+    public synchronized double getTotal() {
+        double total = 0;
+        for (LineItem item : items) {
+            total += item.getTotal();
+        }
+        return total;
+    }
+
+    public synchronized int getItemCount() {
+        return items.size();
+    }
+
+    public synchronized void clear() {
+        items.clear();
     }
 }

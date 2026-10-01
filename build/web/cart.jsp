@@ -1,6 +1,6 @@
-<%@ taglib prefix="c" uri="jakarta.tags.core" %>
-<%@ taglib prefix="fmt" uri="jakarta.tags.fmt" %>
-
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -50,6 +50,10 @@
                             </td>
                         </tr>
                     </c:forEach>
+                    <tr>
+                        <td colspan="3"><strong>Total</strong></td>
+                        <td colspan="2"><strong><fmt:formatNumber value="${cart.total}" type="currency" currencySymbol="$"/></strong></td>
+                    </tr>
                 </tbody>
             </table>
         </c:otherwise>
@@ -57,15 +61,15 @@
 
     <p class="note"><strong>To change the quantity</strong>, enter the new quantity and click on the Update button.</p>
 
-    <div class="action-buttons">
-        <form action="index.jsp" method="get">
+    <footer class="action-buttons">
+        <form action="cart" method="get">
+            <input type="hidden" name="action" value="shop">
             <input type="submit" value="Continue Shopping">
         </form>
         <form action="cart" method="post">
             <input type="hidden" name="action" value="checkout">
             <input type="submit" value="Checkout">
         </form>
-    </div>
-
+    </footer>
 </body>
 </html>
